@@ -7,24 +7,28 @@
     "start": "node dist/app.js",
     "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
     "build": "tsc",
+    "postinstall": "npm run build",
     "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/cors": "^2.8.18",
+    "@types/express": "^4.17.22",
+    "@types/node": "^18.19.110",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^4.21.2",
     "mongodb": "^6.16.0",
-    "mongoose": "^7.0.3"
+    "mongoose": "^7.0.3",
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.18",
-    "@types/express": "^4.17.22",
-    "@types/node": "^18.19.110",
     "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.8.3"
+    "ts-node-dev": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

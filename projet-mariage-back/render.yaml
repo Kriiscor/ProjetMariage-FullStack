@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: projet-mariage-backend
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false # Cette variable doit être configurée manuellement dans le dashboard Render
