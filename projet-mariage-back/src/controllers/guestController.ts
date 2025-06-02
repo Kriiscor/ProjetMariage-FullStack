@@ -93,7 +93,7 @@ export const updateGuest = async (req: Request, res: Response) => {
       { returnDocument: "after" }
     );
 
-    if (!result.value) {
+    if (!result?.value) {
       return res.status(404).json({
         success: false,
         error: "Invité non trouvé",
@@ -122,7 +122,7 @@ export const deleteGuest = async (req: Request, res: Response) => {
       _id: new ObjectId(req.params.id),
     });
 
-    if (!result.value) {
+    if (!result?.value) {
       return res.status(404).json({
         success: false,
         error: "Invité non trouvé",
