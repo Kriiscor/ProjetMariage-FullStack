@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB, { closeConnection } from "./config/database";
 import guestRoutes from "./routes/guestRoutes";
+import authRoutes from "./routes/authRoutes";
 
 // Configuration des variables d'environnement
 dotenv.config();
@@ -24,6 +25,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
+app.use("/api/auth", authRoutes);
 app.use("/api/guests", guestRoutes);
 
 // Route de test
