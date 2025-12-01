@@ -7,37 +7,33 @@ node_modules/
 
 # testing
 /coverage
+*.log
 
 # production
+/dist
 /build
 
 # misc
 .DS_Store
 .env
 .env.local
-.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Environment
-.env.development.local
-.env.test.local
-.env.production.local
-
 # IDE
-.idea/
 .vscode/
+.idea/
 *.swp
 *.swo
+*~
 
 # OS
 Thumbs.db
 
-# Logs
-logs/
-*.log
-
-# TypeScript
-*.tsbuildinfo
+# MongoDB Memory Server
+.mongodb-memory-server/
