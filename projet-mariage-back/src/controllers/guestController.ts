@@ -235,8 +235,10 @@ export const updateGuest = async (req: Request, res: Response) => {
 // Supprimer un invité
 export const deleteGuest = async (req: Request, res: Response) => {
   try {
+    const guestId = req.params.id;
+
     // Validation de l'ID
-    if (!req.params.id || !ObjectId.isValid(req.params.id)) {
+    if (!guestId || !ObjectId.isValid(guestId)) {
       return res.status(400).json({
         success: false,
         error: "ID invalide",
@@ -246,11 +248,12 @@ export const deleteGuest = async (req: Request, res: Response) => {
     const db = await connectDB();
     const guests = db.collection("guests");
 
-    const result = await guests.findOneAndDelete({
-      _id: new ObjectId(req.params.id),
-    });
+    const objectId = new ObjectId(guestId);
 
-    if (!result?.value) {
+    // Utiliser deleteOne au lieu de findOneAndDelete pour une meilleure gestion
+    const result = await guests.deleteOne({ _id: objectId });
+
+    if (result.deletedCount === 0) {
       return res.status(404).json({
         success: false,
         error: "Invité non trouvé",
@@ -259,7 +262,7 @@ export const deleteGuest = async (req: Request, res: Response) => {
 
     res.status(200).json({
       success: true,
-      data: {},
+      data: { message: "Invité supprimé avec succès" },
     });
   } catch (error: any) {
     console.error("Erreur lors de la suppression de l'invité:", error);
